@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.Register"
+    android:background="#181a20"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:text="Tạo tài khoản"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edt_Register_Ten"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/inputlogin"
+            android:padding="15dp"
+            android:hint="Tên người dùng"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/txtError_Register_Ten"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            android:gravity="end"
+            android:textStyle="bold"
+            android:text=""/>
+
+        <EditText
+            android:id="@+id/edt_Register_Taikhoan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/inputlogin"
+            android:padding="15dp"
+            android:hint="Tài khoản"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/txtError_Register_Taikhoan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            android:gravity="end"
+            android:textStyle="bold"
+            android:text=""/>
+
+        <EditText
+            android:id="@+id/edt_Register_Matkhau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginTop="5dp"
+            android:hint="Mật khẩu"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:background="@drawable/inputlogin"/>
+        <TextView
+            android:id="@+id/txtError_Register_Matkhau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            android:gravity="end"
+            android:textStyle="bold"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_Quaylai"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#29974d"
+            android:text="Quay lại"/>
+        <Button
+            android:id="@+id/btn_Register"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:backgroundTint="#29974d"
+            android:text="Tạo tài khoản"/>
+    </LinearLayout>
+
+</LinearLayout>
