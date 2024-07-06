@@ -5,11 +5,11 @@
         android:icon="@drawable/home"
         android:title=""/>
     <item
-        android:id="@+id/srach"
+        android:id="@+id/sreach"
         android:icon="@drawable/sreach"
         android:title=""/>
     <item
-        android:id="@+id/Oder"
+        android:id="@+id/oder"
         android:icon="@drawable/oder"
         android:title=""/>
     <item

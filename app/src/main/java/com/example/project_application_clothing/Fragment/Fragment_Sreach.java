@@ -13,12 +13,11 @@ import androidx.fragment.app.Fragment;
 import com.example.project_application_clothing.R;
 
 public class Fragment_Sreach extends Fragment {
-    Context context;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = View.inflate(context, R.layout.fragment_home, null);
+        View v = inflater.inflate(R.layout.fragment_sreach, container, false);
         return v;
     }
     @Override

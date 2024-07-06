@@ -49,7 +49,13 @@ public class Main extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 if (menuItem.getItemId() == R.id.home){
-
+                    fragmentManager.beginTransaction().replace(R.id.frameLayout, new Fragment_Home()).commit();
+                }else if(menuItem.getItemId() == R.id.sreach){
+                    fragmentManager.beginTransaction().replace(R.id.frameLayout, new Fragment_Sreach()).commit();
+                } else if(menuItem.getItemId() == R.id.oder) {
+                    fragmentManager.beginTransaction().replace(R.id.frameLayout, new Fragment_Oder()).commit();
+                } else if(menuItem.getItemId() == R.id.user) {
+                    fragmentManager.beginTransaction().replace(R.id.frameLayout, new Fragment_User()).commit();
                 }
                 return true;
             }
