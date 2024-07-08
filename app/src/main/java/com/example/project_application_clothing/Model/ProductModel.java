@@ -2,16 +2,16 @@ package com.example.project_application_clothing.Model;
 
 public class ProductModel {
     private int id;
-    private String tensp, giasp, anhsp, theloai, luotmua, yeuthich;
+    private String tensp, giasp, anhsp, theloai, luotmua, trangthai;
 
-    public ProductModel(int id, String tensp, String giasp, String anhsp, String theloai, String luotmua, String yeuthich) {
+    public ProductModel(int id, String tensp, String giasp, String anhsp, String theloai, String luotmua, String trangthai) {
         this.id = id;
         this.tensp = tensp;
         this.giasp = giasp;
         this.anhsp = anhsp;
         this.theloai = theloai;
         this.luotmua = luotmua;
-        this.yeuthich = yeuthich;
+        this.trangthai = trangthai;
     }
 
     public ProductModel() {
@@ -65,11 +65,11 @@ public class ProductModel {
         this.luotmua = luotmua;
     }
 
-    public String getYeuthich() {
-        return yeuthich;
+    public String getTrangthai() {
+        return trangthai;
     }
 
-    public void setYeuthich(String yeuthich) {
-        this.yeuthich = yeuthich;
+    public void setTrangthai(String trangthai) {
+        this.trangthai = trangthai;
     }
 }

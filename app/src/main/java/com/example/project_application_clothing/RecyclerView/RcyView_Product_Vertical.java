@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.project_application_clothing.Controller.CartController;
+import com.example.project_application_clothing.Model.CartModel;
 import com.example.project_application_clothing.Model.ProductModel;
 import com.example.project_application_clothing.R;
 import com.squareup.picasso.Picasso;
@@ -19,6 +21,8 @@ import java.util.List;
 public class RcyView_Product_Vertical extends RecyclerView.Adapter<RcyView_Product_Vertical.Product_Vertical_Holder>{
     Context context;
     List<ProductModel> list;
+    CartController cartController;
+    CartModel cartModel;
 
     public RcyView_Product_Vertical(Context context, List<ProductModel> list) {
         this.context = context;
@@ -42,6 +46,18 @@ public class RcyView_Product_Vertical extends RecyclerView.Adapter<RcyView_Produ
         holder.theloai_product_vertical.setText(productModel.getTheloai());
         holder.gia_product_vertical.setText(productModel.getGiasp());
         holder.luotmua_product_vertical.setText("Đã bán: " + productModel.getLuotmua());
+        holder.img_product_vertical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cartController = new CartController(context);
+                cartModel = new CartModel();
+                cartModel.setMakh("1");
+                cartModel.setMasp(String.valueOf(productModel.getId()));
+                cartModel.setTrangthai("1");
+
+                cartController.insertCart(cartModel);
+            }
+        });
     }
 
     @Override

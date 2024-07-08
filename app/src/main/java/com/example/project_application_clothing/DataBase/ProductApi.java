@@ -24,7 +24,7 @@ public class ProductApi {
         values.put("anhsp", model.getAnhsp());
         values.put("theloai", model.getTheloai());
         values.put("luotmua", model.getLuotmua());
-        values.put("yeuthich", model.getYeuthich());
+        values.put("trangthai", model.getTrangthai());
 
         long check = db.insert("Product", null, values);
         return check > 0;
@@ -42,14 +42,15 @@ public class ProductApi {
         values.put("anhsp", model.getAnhsp());
         values.put("theloai", model.getTheloai());
         values.put("luotmua", model.getLuotmua());
-        values.put("yeuthich", model.getYeuthich());
+        values.put("trangthai", model.getTrangthai());
 
         long check = db.update("Product", values, "id=?", data);
         return check > 0;
     }
     public List<ProductModel> getAllProduct (){
         List<ProductModel> list = new ArrayList<>();
-        Cursor c = db.rawQuery("SELECT * FROM Product", null);
+        String[] data = new String[]{"1"};
+        Cursor c = db.rawQuery("SELECT * FROM Product WHERE trangthai=?", data);
         if (c.moveToFirst()){
             do{
                 ProductModel productModel = new ProductModel();
@@ -59,12 +60,48 @@ public class ProductApi {
                 productModel.setAnhsp(c.getString(3));
                 productModel.setTheloai(c.getString(4));
                 productModel.setLuotmua(c.getString(5));
-                productModel.setYeuthich(c.getString(6));
+                productModel.setTrangthai(c.getString(6));
                 list.add(productModel);
             }while (c.moveToNext());
         }
         return list;
     }
 
-
+    public List<ProductModel> getAllProductByCategory (String category){
+        String[] data = new String[]{category, "1"};
+        List<ProductModel> list = new ArrayList<>();
+        Cursor c = db.rawQuery("SELECT * FROM Product WHERE theloai = ? AND trangthai=?", data);
+        if (c.moveToFirst()){
+            do{
+                ProductModel productModel = new ProductModel();
+                productModel.setId(c.getInt(0));
+                productModel.setTensp(c.getString(1));
+                productModel.setGiasp(c.getString(2));
+                productModel.setAnhsp(c.getString(3));
+                productModel.setTheloai(c.getString(4));
+                productModel.setLuotmua(c.getString(5));
+                productModel.setTrangthai(c.getString(6));
+                list.add(productModel);
+            }while (c.moveToNext());
+        }
+        return list;
+    }
+    public ProductModel getAllProductById(int id){
+        String[] data = new String[]{String.valueOf(id), "1"};
+        Cursor c = db.rawQuery("SELECT * FROM Product WHERE id = ? AND trangthai=?", data);
+        ProductModel productModel = new ProductModel();
+        if (c.moveToFirst()){
+            do{
+                productModel.setId(c.getInt(0));
+                productModel.setTensp(c.getString(1));
+                productModel.setGiasp(c.getString(2));
+                productModel.setAnhsp(c.getString(3));
+                productModel.setTheloai(c.getString(4));
+                productModel.setLuotmua(c.getString(5));
+                productModel.setTrangthai(c.getString(6));
+                return productModel;
+            }while (c.moveToNext());
+        }
+        return productModel;
+    }
 }

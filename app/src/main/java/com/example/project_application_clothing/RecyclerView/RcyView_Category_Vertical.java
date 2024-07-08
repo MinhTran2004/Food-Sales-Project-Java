@@ -1,7 +1,6 @@
 package com.example.project_application_clothing.RecyclerView;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -10,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.project_application_clothing.Interface.InterfaceHome;
 import com.example.project_application_clothing.Model.CategoryModel;
-import com.example.project_application_clothing.Model.ProductModel;
 import com.example.project_application_clothing.R;
 import com.squareup.picasso.Picasso;
 
@@ -20,10 +19,12 @@ import java.util.List;
 public class RcyView_Category_Vertical extends RecyclerView.Adapter<RcyView_Category_Vertical.Category_Hodel>{
     private List<CategoryModel> list;
     private Context context;
+    private InterfaceHome interfaceHome;
 
-    public RcyView_Category_Vertical( Context context, List<CategoryModel> list) {
+    public RcyView_Category_Vertical( Context context, List<CategoryModel> list, InterfaceHome interfaceHome) {
         this.context = context;
         this.list = list;
+        this.interfaceHome = interfaceHome;
     }
 
     @NonNull
@@ -44,6 +45,7 @@ public class RcyView_Category_Vertical extends RecyclerView.Adapter<RcyView_Cate
             holder.img_category.setVisibility(View.GONE);
             holder.name_category.setText(categoryModel.getTen());
         }
+        holder.itemView.setOnClickListener( v -> interfaceHome.OnGetProductByName(categoryModel.getTen()));
     }
 
     @Override

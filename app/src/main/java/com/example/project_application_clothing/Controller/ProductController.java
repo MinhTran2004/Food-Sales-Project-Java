@@ -9,7 +9,6 @@ import java.util.List;
 
 public class ProductController {
     Context context;
-
     public ProductController(Context context){
         this.context = context;
     }
@@ -28,5 +27,13 @@ public class ProductController {
     public List<ProductModel> getAllProduct(){
         ProductApi productApi = new ProductApi(context);
         return productApi.getAllProduct();
+    }
+    public List<ProductModel> getAllProductByCategory(String category){
+        ProductApi productApi = new ProductApi(context);
+        return productApi.getAllProductByCategory(category);
+    }
+    public ProductModel getAllProductById (int id){
+        ProductApi productApi = new ProductApi(context);
+        return productApi.getAllProductById(id);
     }
 }

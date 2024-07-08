@@ -2,13 +2,14 @@ package com.example.project_application_clothing.Model;
 
 public class UserModel {
     private int id;
-    private String ten, taikhoan, matkhau;
+    private String ten, taikhoan, matkhau, trangthai;
 
-    public UserModel(int id, String ten, String taikhoan, String matkhau) {
+    public UserModel(int id, String ten, String taikhoan, String matkhau, String trangthai) {
         this.id = id;
         this.ten = ten;
         this.taikhoan = taikhoan;
         this.matkhau = matkhau;
+        this.trangthai = trangthai;
     }
 
     public UserModel() {
@@ -44,5 +45,13 @@ public class UserModel {
 
     public void setMatkhau(String matkhau) {
         this.matkhau = matkhau;
+    }
+
+    public String getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(String trangthai) {
+        this.trangthai = trangthai;
     }
 }

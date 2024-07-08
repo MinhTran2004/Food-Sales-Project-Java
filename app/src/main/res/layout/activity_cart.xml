@@ -10,15 +10,15 @@
     tools:context=".View.Cart">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerView_cart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/layoutcart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/layoutcart"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:paddingTop="5dp"
@@ -39,6 +39,7 @@
                 android:textColor="@color/white"
                 android:text="Tổng tiền"/>
             <TextView
+                android:id="@+id/txt_tongtien"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"

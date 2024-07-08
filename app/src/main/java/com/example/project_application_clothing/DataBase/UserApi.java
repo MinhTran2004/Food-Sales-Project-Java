@@ -19,6 +19,7 @@ public class UserApi {
         values.put("ten", model.getTen());
         values.put("taikhoan", model.getTaikhoan());
         values.put("matkhau", model.getMatkhau());
+        values.put("trangthai", model.getTrangthai());
 
         long check = db.insert("User", null, values);
         return check > 0;
@@ -34,6 +35,7 @@ public class UserApi {
         values.put("ten", model.getTen());
         values.put("taikhoan", model.getTaikhoan());
         values.put("matkhau", model.getMatkhau());
+        values.put("trangthai", model.getTrangthai());
 
         long check = db.update("User", values, "id=?", data);
         return check > 0;
@@ -42,7 +44,7 @@ public class UserApi {
         boolean check = true;
         if (screen == "login"){
             String[] data = new String[]{String.valueOf(model.getTaikhoan()), String.valueOf(model.getMatkhau())};
-            Cursor cursor = db.rawQuery("SELECT * FROM User WHERE taikhoan=? AND matkhau=?", data);
+            Cursor cursor = db.rawQuery("SELECT * FROM User WHERE taikhoan=? AND matkhau=? AND trangthai=1", data);
             if (!cursor.moveToFirst()){
                 check = false;
             }

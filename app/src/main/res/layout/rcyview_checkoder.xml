@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="410dp"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:gravity="center"
+        android:background="@drawable/inputlogin"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/img_checkOder"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/ten_checkOder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Tên sản phẩm"/>
+            <TextView
+                android:id="@+id/theloai_checkOder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/white"
+                android:text="Hamburger"/>
+
+            <TextView
+                android:id="@+id/gia_checkOder"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="#1bac4b"
+                android:text="$ 20.000"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
