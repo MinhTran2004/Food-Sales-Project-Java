@@ -45,6 +45,7 @@ public class DataHelper extends SQLiteOpenHelper {
                 "\t\"id\"\tINTEGER NOT NULL,\n" +
                 "\t\"makh\"\tTEXT,\n" +
                 "\t\"magh\"\tTEXT,\n" +
+                "\t\"tongtien\"\tTEXT,\n" +
                 "\t\"trangthai\"\tTEXT,\n" +
                 "\tPRIMARY KEY(\"id\"),\n" +
                 "\tFOREIGN KEY(\"magh\") REFERENCES \"Cart\"(\"id\"),\n" +

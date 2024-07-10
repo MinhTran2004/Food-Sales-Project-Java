@@ -19,11 +19,11 @@ public class CartApi {
         dataHelper = new DataHelper(context);
         db = dataHelper.getReadableDatabase();
     }
-    public boolean insertCart(CartModel cartModel){
+    public boolean insertCart(int id, String makh){
         ContentValues values = new ContentValues();
-        values.put("makh", cartModel.getMakh());
-        values.put("maSP", cartModel.getMasp());
-        values.put("trangthai", cartModel.getTrangthai());
+        values.put("masp", id);
+        values.put("makh", makh);
+        values.put("trangthai", "1");
 
         long check = db.insert("Cart", null, values);
         return check > 0;
@@ -39,8 +39,8 @@ public class CartApi {
 
         ContentValues values = new ContentValues();
         values.put("makh", cartModel.getMakh());
-        values.put("makh", cartModel.getMakh());
-        values.put("trangthai", cartModel.getTrangthai());
+        values.put("masp", cartModel.getMasp());
+        values.put("trangthai", "0");
 
         long check = db.update("Cart", values, "id=?", data);
         return check > 0;

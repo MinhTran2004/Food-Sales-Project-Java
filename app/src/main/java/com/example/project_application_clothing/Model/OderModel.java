@@ -2,12 +2,13 @@ package com.example.project_application_clothing.Model;
 
 public class OderModel {
     private int id;
-    private String makh, magh, trangthai;
+    private String makh, magh, tongtien, trangthai;
 
-    public OderModel(int id, String makh, String magh, String trangthai) {
+    public OderModel(int id, String makh, String magh, String tongtien, String trangthai) {
         this.id = id;
         this.makh = makh;
         this.magh = magh;
+        this.tongtien = tongtien;
         this.trangthai = trangthai;
     }
 
@@ -38,6 +39,12 @@ public class OderModel {
         this.magh = magh;
     }
 
+    public String getTongtien() {
+        return tongtien;
+    }
+    public void setTongtien(String tongtien) {
+        this.tongtien = tongtien;
+    }
     public String getTrangthai() {
         return trangthai;
     }

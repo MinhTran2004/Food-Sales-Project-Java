@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +23,7 @@ import com.example.project_application_clothing.RecyclerView.RcyView_Category_Ve
 import com.example.project_application_clothing.RecyclerView.RcyView_Product_Horiztal;
 import com.example.project_application_clothing.RecyclerView.RcyView_Product_Vertical;
 import com.example.project_application_clothing.View.Cart;
+import com.example.project_application_clothing.View.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,9 @@ public class Fragment_Home extends Fragment implements InterfaceHome {
         recyclerView_product_vertical = view.findViewById(R.id.recyclerView_product_vertical);
         recyclerView_category_hozital = view.findViewById(R.id.recyclerView_category_hozital);
         img_Cart = view.findViewById(R.id.img_Cart);
+
+
+
 
         img_Cart.setOnClickListener(new View.OnClickListener() {
             @Override

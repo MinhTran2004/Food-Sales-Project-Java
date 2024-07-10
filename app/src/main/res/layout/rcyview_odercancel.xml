@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="410dp"
+    android:layout_height="wrap_content"
+    android:backgroundTint="#181a20"
+    android:padding="3dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/inputlogin"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_OderCancel_Product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#1f222a"/>
+
+        <LinearLayout
+            android:layout_width="370dp"
+            android:layout_height="1dp"
+            android:background="#ffffff"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#1f222a"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:text="Tổng tiền: "/>
+            <TextView
+                android:id="@+id/text_oderCancel_tongtien"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#1bac4b"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:text="20.000$"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

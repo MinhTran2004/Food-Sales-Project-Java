@@ -1,6 +1,7 @@
 package com.example.project_application_clothing.RecyclerView;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -45,11 +46,9 @@ public class RcyView_CheckOder extends RecyclerView.Adapter<RcyView_CheckOder.Ch
         holder.theloai_checkOder.setText(productModel.getTheloai());
         holder.gia_checkOder.setText("$"+productModel.getGiasp());
 
-        tong += tong + Integer.valueOf(productModel.getGiasp());
-
+        tong += Integer.valueOf(productModel.getGiasp());
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         String tongtien = decimalFormat.format(tong);
-
         interfaceCheckOder.getTongtien(tongtien);
     }
     @Override

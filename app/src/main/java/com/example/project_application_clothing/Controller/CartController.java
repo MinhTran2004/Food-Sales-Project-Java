@@ -14,9 +14,9 @@ public class CartController {
     public CartController(Context context) {
         this.context = context;
     }
-    public boolean insertCart(CartModel cartModel){
+    public boolean insertCart(int id, String makh){
         CartApi cartApi = new CartApi(context);
-        return cartApi.insertCart(cartModel);
+        return cartApi.insertCart(id, makh);
     }
     public boolean deleteCart(CartModel cartModel){
         CartApi cartApi = new CartApi(context);

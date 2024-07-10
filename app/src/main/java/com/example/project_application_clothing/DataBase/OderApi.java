@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.project_application_clothing.Model.OderModel;
+import com.example.project_application_clothing.Model.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class OderApi {
         ContentValues values = new ContentValues();
         values.put("makh", model.getMakh());
         values.put("magh", model.getMagh());
+        values.put("tongtien", model.getTongtien());
         values.put("trangthai", model.getTrangthai());
 
         long check = db.insert("Oder", null, values);
@@ -31,20 +33,21 @@ public class OderApi {
         long check = db.delete("Oder", "id=?", data);
         return check > 0;
     }
-    public boolean updateOder(OderModel model){
+    public boolean updateOder(OderModel model, String trangthai){
         String[] data = new String[]{String.valueOf(model.getId())};
         ContentValues values = new ContentValues();
         values.put("makh", model.getMakh());
         values.put("magh", model.getMagh());
-        values.put("trangthai", model.getTrangthai());
+        values.put("tongtien", model.getTongtien());
+        values.put("trangthai", trangthai);
 
         long check = db.update("Oder", values, "id=?", data);
         return check > 0;
     }
-    public List<OderModel> getAllOderActive (){
+    public List<OderModel> getAllOderActive(UserModel userModel){
         List<OderModel> list = new ArrayList<>();
-        String[] data = new String[]{"Active"};
-        Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ?", data);
+        String[] data = new String[]{"Active", String.valueOf(userModel.getId())};
+        Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ? AND makh=?", data);
 
         if (c.moveToFirst()){
             do {
@@ -52,16 +55,17 @@ public class OderApi {
                 oderModel.setId(c.getInt(0));
                 oderModel.setMakh(c.getString(1));
                 oderModel.setMagh(c.getString(2));
-                oderModel.setTrangthai(c.getString(3));
+                oderModel.setTongtien(c.getString(3));
+                oderModel.setTrangthai(c.getString(4));
                 list.add(oderModel);
             }while (c.moveToNext());
         }
         return list;
     }
-    public List<OderModel> getAllOderCompleted (){
+    public List<OderModel> getAllOderCompleted(UserModel userModel){
         List<OderModel> list = new ArrayList<>();
-        String[] data = new String[]{"Completed"};
-        Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ?", data);
+        String[] data = new String[]{"Completed", String.valueOf(userModel.getId())};
+        Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ? AND makh=?", data);
 
         if (c.moveToFirst()){
             do {
@@ -69,13 +73,14 @@ public class OderApi {
                 oderModel.setId(c.getInt(0));
                 oderModel.setMakh(c.getString(1));
                 oderModel.setMagh(c.getString(2));
-                oderModel.setTrangthai(c.getString(3));
+                oderModel.setTongtien(c.getString(3));
+                oderModel.setTrangthai(c.getString(4));
                 list.add(oderModel);
             }while (c.moveToNext());
         }
         return list;
     }
-    public List<OderModel> getAllOderCancel (){
+    public List<OderModel> getAllOderCancel(){
         List<OderModel> list = new ArrayList<>();
         String[] data = new String[]{"Cancel"};
         Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ?", data);
@@ -86,7 +91,8 @@ public class OderApi {
                 oderModel.setId(c.getInt(0));
                 oderModel.setMakh(c.getString(1));
                 oderModel.setMagh(c.getString(2));
-                oderModel.setTrangthai(c.getString(3));
+                oderModel.setTongtien(c.getString(3));
+                oderModel.setTrangthai(c.getString(4));
                 list.add(oderModel);
             }while (c.moveToNext());
         }
