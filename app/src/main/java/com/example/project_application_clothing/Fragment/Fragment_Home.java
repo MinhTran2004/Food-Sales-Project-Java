@@ -1,12 +1,16 @@
 package com.example.project_application_clothing.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,15 +42,22 @@ public class Fragment_Home extends Fragment implements InterfaceHome {
     List<ProductModel> listVertical;
     ProductController productController;
     ImageView img_Cart;
+    TextView txt_home_name, txt_home_chucvu;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         recyclerView_product_hozital = view.findViewById(R.id.recyclerView_product_hozital);
         recyclerView_product_vertical = view.findViewById(R.id.recyclerView_product_vertical);
         recyclerView_category_hozital = view.findViewById(R.id.recyclerView_category_hozital);
+        txt_home_name = view.findViewById(R.id.txt_home_name);
+        txt_home_chucvu = view.findViewById(R.id.txt_home_chucvu);
         img_Cart = view.findViewById(R.id.img_Cart);
 
-
-
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("User", Context.MODE_PRIVATE);
+        String makh = sharedPreferences.getString("id", null);
+        String ten = sharedPreferences.getString("ten", null);
+        String taikhoan = sharedPreferences.getString("taikhoan", null);
+        String matkhau = sharedPreferences.getString("matkhau", null);
+        txt_home_name.setText(ten);
 
         img_Cart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +65,7 @@ public class Fragment_Home extends Fragment implements InterfaceHome {
                 startActivity(new Intent(getContext(), Cart.class));
             }
         });
+
 
         productController = new ProductController(getContext());
         listHorizon =  productController.getAllProduct();

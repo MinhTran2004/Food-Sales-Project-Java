@@ -1,10 +1,13 @@
 package com.example.project_application_clothing.View;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +29,7 @@ public class Cart extends AppCompatActivity implements InterfaceCart {
     List<CartModel> list;
     TextView txt_tongtien;
     Button btn_cart;
+    ImageView btn_return_cart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,18 +38,27 @@ public class Cart extends AppCompatActivity implements InterfaceCart {
         recyclerView_cart = findViewById(R.id.recyclerView_cart);
         txt_tongtien = findViewById(R.id.txt_tongtien);
         btn_cart = findViewById(R.id.btn_cart);
+        btn_return_cart = findViewById(R.id.btn_return_cart);
         cartController = new CartController(this);
 
-        list = cartController.getAllCart(1);
+        SharedPreferences sharedPreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
+        String makh = sharedPreferences.getString("id", null);
 
-        rcyView_cart = new RcyView_Cart(this, list, this);
+        list = cartController.getAllCart(makh);
+
+        rcyView_cart = new RcyView_Cart(this, list, this, makh);
         recyclerView_cart.setAdapter(rcyView_cart);
         recyclerView_cart.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
         btn_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Cart.this, CheckOder.class));
+            }
+        });
+        btn_return_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Cart.this, Main.class));
             }
         });
     }

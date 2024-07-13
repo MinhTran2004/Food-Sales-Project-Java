@@ -1,5 +1,7 @@
 package com.example.project_application_clothing.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,10 +40,11 @@ public class Fragment_OderActive extends Fragment {
         recyclerView_OderActive = view.findViewById(R.id.recyclerView_OderAcitve);
         oderController = new OderController(getContext());
 
-        UserModel userModel = new UserModel();
-        userModel.setId(1);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("User", Context.MODE_PRIVATE);
+        String makh = sharedPreferences.getString("id", null);
+        String chucvu = sharedPreferences.getString("taikhoan", null);
 
-        listOder = oderController.getAllOderActive(userModel);
+        listOder = oderController.getAllOderActive(makh, chucvu);
 
         rcyView_oderActive = new RcyView_OderActive(getContext(), listOder);
         recyclerView_OderActive.setAdapter(rcyView_oderActive);

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.project_application_clothing.Controller.ProductController;
 import com.example.project_application_clothing.Model.CartModel;
@@ -19,10 +20,11 @@ public class CartApi {
         dataHelper = new DataHelper(context);
         db = dataHelper.getReadableDatabase();
     }
-    public boolean insertCart(int id, String makh){
+    public boolean insertCart(String id, String makh){
         ContentValues values = new ContentValues();
         values.put("masp", id);
         values.put("makh", makh);
+        values.put("soluong", "1");
         values.put("trangthai", "1");
 
         long check = db.insert("Cart", null, values);
@@ -45,11 +47,10 @@ public class CartApi {
         long check = db.update("Cart", values, "id=?", data);
         return check > 0;
     }
-    public List<CartModel> getAllCart(int makh){
+    public List<CartModel> getAllCart(String makh){
         List<CartModel> list = new ArrayList<>();
         String[] data = new String[]{String.valueOf(makh), "1"};
         Cursor cursor = db.rawQuery("SELECT * FROM Cart WHERE makh=? AND trangthai=?", data);
-
         if (cursor.moveToFirst()){
             do {
                 CartModel cartModel = new CartModel();
@@ -61,5 +62,22 @@ public class CartApi {
             }while (cursor.moveToNext());
         }
         return list;
+    }
+    public void getCartById(String id, Context context){
+        List<CartModel> list = new ArrayList<>();
+        String[] data = new String[]{id};
+        Cursor cursor = db.rawQuery("SELECT * FROM Cart WHERE id=?", data);
+        ProductController productController = new ProductController(context);
+        if (cursor.moveToFirst()){
+            do {
+                String masp = cursor.getString(2);
+                String soluong = cursor.getString(3);
+                ProductModel productModel = productController.getAllProductById(masp);
+                int luotmua = Integer.valueOf(productModel.getLuotmua()) + Integer.valueOf(soluong);
+                productModel.setLuotmua(String.valueOf(luotmua));
+
+                productController.updateProduct(productModel);
+            }while (cursor.moveToNext());
+        }
     }
 }

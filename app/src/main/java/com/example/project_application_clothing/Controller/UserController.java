@@ -6,20 +6,29 @@ import com.example.project_application_clothing.DataBase.UserApi;
 import com.example.project_application_clothing.Model.UserModel;
 
 public class UserController {
-    public boolean addUser(UserModel model, Context context){
+    private Context context;
+    public UserController(Context context){
+        this.context = context;
+    }
+    public boolean addUser(UserModel model){
         UserApi userApi = new UserApi(context);
         return userApi.addUser(model);
     }
-    public boolean deleteUser(UserModel model, Context context){
+    public boolean deleteUser(UserModel model){
         UserApi userApi = new UserApi(context);
         return userApi.deleteUser(model);
     }
-    public boolean updateUser(UserModel model, Context context){
+    public boolean updateUser(UserModel model){
         UserApi userApi = new UserApi(context);
         return userApi.updateUser(model);
     }
-    public boolean checkUser(UserModel userModel, Context context, String screen){
+    public boolean checkUser(UserModel userModel, String screen){
         UserApi userApi = new UserApi(context);
-        return userApi.checkuser(userModel, screen);
+        return userApi.checkUser(userModel, screen);
     }
+    public UserModel checkLogin(UserModel userModel){
+        UserApi userApi = new UserApi(context);
+        return userApi.checkLogin(userModel);
+    }
+
 }

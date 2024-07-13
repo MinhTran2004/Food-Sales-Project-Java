@@ -24,11 +24,6 @@ import java.util.List;
 public class RcyView_Product_Vertical extends RecyclerView.Adapter<RcyView_Product_Vertical.Product_Vertical_Holder>{
     Context context;
     List<ProductModel> list;
-    CartController cartController;
-    CartModel cartModel;
-    LinearLayout home_vertical;
-
-
     public RcyView_Product_Vertical(Context context, List<ProductModel> list) {
         this.context = context;
         this.list = list;
@@ -51,11 +46,12 @@ public class RcyView_Product_Vertical extends RecyclerView.Adapter<RcyView_Produ
         holder.theloai_product_vertical.setText(productModel.getTheloai());
         holder.gia_product_vertical.setText(productModel.getGiasp());
         holder.luotmua_product_vertical.setText("Đã bán: " + productModel.getLuotmua());
+
         holder.home_vertical.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Product.class);
-                intent.putExtra("id", productModel.getId());
+                intent.putExtra("masp", String.valueOf(productModel.getId()));
                 intent.putExtra("anh", productModel.getAnhsp());
                 intent.putExtra("ten", productModel.getTensp());
                 intent.putExtra("theloai", productModel.getTheloai());

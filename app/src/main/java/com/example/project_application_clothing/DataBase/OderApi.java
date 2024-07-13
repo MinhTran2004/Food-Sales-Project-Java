@@ -44,58 +44,104 @@ public class OderApi {
         long check = db.update("Oder", values, "id=?", data);
         return check > 0;
     }
-    public List<OderModel> getAllOderActive(UserModel userModel){
+    public List<OderModel> getAllOderActive(String id, String chucvu){
         List<OderModel> list = new ArrayList<>();
-        String[] data = new String[]{"Active", String.valueOf(userModel.getId())};
-        Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ? AND makh=?", data);
-
-        if (c.moveToFirst()){
-            do {
-                OderModel oderModel = new OderModel();
-                oderModel.setId(c.getInt(0));
-                oderModel.setMakh(c.getString(1));
-                oderModel.setMagh(c.getString(2));
-                oderModel.setTongtien(c.getString(3));
-                oderModel.setTrangthai(c.getString(4));
-                list.add(oderModel);
-            }while (c.moveToNext());
+        if (chucvu.equals("admin")) {
+            String[] data = new String[]{"Active"};
+            Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ?", data);
+            if (c.moveToFirst()) {
+                do {
+                    OderModel oderModel = new OderModel();
+                    oderModel.setId(c.getInt(0));
+                    oderModel.setMakh(c.getString(1));
+                    oderModel.setMagh(c.getString(2));
+                    oderModel.setTongtien(c.getString(3));
+                    oderModel.setTrangthai(c.getString(4));
+                    list.add(oderModel);
+                } while (c.moveToNext());
+            }
+        } else {
+            String[] data = new String[]{"Active", id};
+            Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ? AND makh=?", data);
+            if (c.moveToFirst()) {
+                do {
+                    OderModel oderModel = new OderModel();
+                    oderModel.setId(c.getInt(0));
+                    oderModel.setMakh(c.getString(1));
+                    oderModel.setMagh(c.getString(2));
+                    oderModel.setTongtien(c.getString(3));
+                    oderModel.setTrangthai(c.getString(4));
+                    list.add(oderModel);
+                } while (c.moveToNext());
+            }
         }
         return list;
     }
-    public List<OderModel> getAllOderCompleted(UserModel userModel){
+    public List<OderModel> getAllOderCompleted(String id, String chucvu) {
         List<OderModel> list = new ArrayList<>();
-        String[] data = new String[]{"Completed", String.valueOf(userModel.getId())};
-        Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ? AND makh=?", data);
-
-        if (c.moveToFirst()){
-            do {
-                OderModel oderModel = new OderModel();
-                oderModel.setId(c.getInt(0));
-                oderModel.setMakh(c.getString(1));
-                oderModel.setMagh(c.getString(2));
-                oderModel.setTongtien(c.getString(3));
-                oderModel.setTrangthai(c.getString(4));
-                list.add(oderModel);
-            }while (c.moveToNext());
+        if (chucvu.equals("admin")) {
+            String[] data = new String[]{"Completed"};
+            Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ?", data);
+            if (c.moveToFirst()) {
+                do {
+                    OderModel oderModel = new OderModel();
+                    oderModel.setId(c.getInt(0));
+                    oderModel.setMakh(c.getString(1));
+                    oderModel.setMagh(c.getString(2));
+                    oderModel.setTongtien(c.getString(3));
+                    oderModel.setTrangthai(c.getString(4));
+                    list.add(oderModel);
+                } while (c.moveToNext());
+            }
+        } else {
+            String[] data = new String[]{"Completed", id};
+            Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ? AND makh=?", data);
+            if (c.moveToFirst()) {
+                do {
+                    OderModel oderModel = new OderModel();
+                    oderModel.setId(c.getInt(0));
+                    oderModel.setMakh(c.getString(1));
+                    oderModel.setMagh(c.getString(2));
+                    oderModel.setTongtien(c.getString(3));
+                    oderModel.setTrangthai(c.getString(4));
+                    list.add(oderModel);
+                } while (c.moveToNext());
+            }
         }
         return list;
     }
-    public List<OderModel> getAllOderCancel(){
+    public List<OderModel> getAllOderCancel(String id, String chucvu){
         List<OderModel> list = new ArrayList<>();
-        String[] data = new String[]{"Cancel"};
-        Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ?", data);
-
-        if (c.moveToFirst()){
-            do {
-                OderModel oderModel = new OderModel();
-                oderModel.setId(c.getInt(0));
-                oderModel.setMakh(c.getString(1));
-                oderModel.setMagh(c.getString(2));
-                oderModel.setTongtien(c.getString(3));
-                oderModel.setTrangthai(c.getString(4));
-                list.add(oderModel);
-            }while (c.moveToNext());
+        if (chucvu.equals("admin")){
+            String[] data = new String[]{"Cancel"};
+            Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ?", data);
+            if (c.moveToFirst()){
+                do {
+                    OderModel oderModel = new OderModel();
+                    oderModel.setId(c.getInt(0));
+                    oderModel.setMakh(c.getString(1));
+                    oderModel.setMagh(c.getString(2));
+                    oderModel.setTongtien(c.getString(3));
+                    oderModel.setTrangthai(c.getString(4));
+                    list.add(oderModel);
+                }while (c.moveToNext());
+            }
+        }else {
+            String[] data = new String[]{"Cancel", id};
+            Cursor c = db.rawQuery("SELECT * FROM Oder WHERE trangthai = ? AND makh=?", data);
+            if (c.moveToFirst()) {
+                do {
+                    OderModel oderModel = new OderModel();
+                    oderModel.setId(c.getInt(0));
+                    oderModel.setMakh(c.getString(1));
+                    oderModel.setMagh(c.getString(2));
+                    oderModel.setTongtien(c.getString(3));
+                    oderModel.setTrangthai(c.getString(4));
+                    list.add(oderModel);
+                } while (c.moveToNext());
+            }
         }
         return list;
     }
 }
+

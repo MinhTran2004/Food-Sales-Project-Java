@@ -25,16 +25,16 @@ public class OderController {
         OderApi oderApi = new OderApi(context);
         return oderApi.updateOder(oderModel, trangthai);
     }
-    public List<OderModel> getAllOderActive (UserModel userModel){
+    public List<OderModel> getAllOderActive (String id, String chucvu){
         OderApi oderApi = new OderApi(context);
-        return oderApi.getAllOderActive(userModel);
+        return oderApi.getAllOderActive(id, chucvu);
     }
-    public List<OderModel> getAllOderCompleted (UserModel userModel){
+    public List<OderModel> getAllOderCompleted (String id, String chucvu){
         OderApi oderApi = new OderApi(context);
-        return oderApi.getAllOderCompleted(userModel);
+        return oderApi.getAllOderCompleted(id, chucvu);
     }
-    public List<OderModel> getAllOderCancel (){
+    public List<OderModel> getAllOderCancel (String id, String chucvu){
         OderApi oderApi = new OderApi(context);
-        return oderApi.getAllOderCancel();
+        return oderApi.getAllOderCancel(id,chucvu);
     }
 }

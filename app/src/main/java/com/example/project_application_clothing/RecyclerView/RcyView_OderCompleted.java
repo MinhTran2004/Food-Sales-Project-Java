@@ -1,7 +1,6 @@
 package com.example.project_application_clothing.RecyclerView;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -24,7 +23,7 @@ public class RcyView_OderCompleted extends RecyclerView.Adapter<RcyView_OderComp
     private OderModel oderModel;
     private ProductController productController;
     private List<ProductModel> listProduct;
-    private Rcyview_Oder_Product rcyview_oder_product;
+    private Rcyview_Oder_ProductCompleted rcyview_oder_productCompleted;
     public RcyView_OderCompleted(Context context, List<OderModel> listOder) {
         this.context = context;
         this.listOder = listOder;
@@ -48,11 +47,11 @@ public class RcyView_OderCompleted extends RecyclerView.Adapter<RcyView_OderComp
         String[] arrMagh = magh.split(",");
         listProduct = new ArrayList<>();
         for (int i=0; i<arrMagh.length; i++){
-            listProduct.add(productController.getAllProductById(Integer.parseInt(arrMagh[i])));
+            listProduct.add(productController.getAllProductById(arrMagh[i]));
         }
 
-        rcyview_oder_product = new Rcyview_Oder_Product(context, listProduct, "Completed");
-        holder.recyclerView_OderCompleted_Product.setAdapter(rcyview_oder_product);
+        rcyview_oder_productCompleted = new Rcyview_Oder_ProductCompleted(context, listProduct);
+        holder.recyclerView_OderCompleted_Product.setAdapter(rcyview_oder_productCompleted);
         holder.recyclerView_OderCompleted_Product.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
     }
     @Override

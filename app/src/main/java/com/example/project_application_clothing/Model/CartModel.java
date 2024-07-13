@@ -2,12 +2,13 @@ package com.example.project_application_clothing.Model;
 
 public class CartModel {
     private int id;
-    private String makh, masp, trangthai;
+    private String makh, masp, soluong, trangthai;
 
-    public CartModel(int id, String makh, String masp, String trangthai) {
+    public CartModel(int id, String makh, String masp, String soluong, String trangthai) {
         this.id = id;
         this.makh = makh;
         this.masp = masp;
+        this.soluong = soluong;
         this.trangthai = trangthai;
     }
 
@@ -37,7 +38,12 @@ public class CartModel {
     public void setMasp(String masp) {
         this.masp = masp;
     }
-
+    public String getSoluong() {
+        return soluong;
+    }
+    public void setSoluong(String soluong) {
+        this.soluong = soluong;
+    }
     public String getTrangthai() {
         return trangthai;
     }

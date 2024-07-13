@@ -35,6 +35,7 @@ public class DataHelper extends SQLiteOpenHelper {
                 "\t\"id\"\tINTEGER NOT NULL,\n" +
                 "\t\"makh\"\tTEXT,\n" +
                 "\t\"masp\"\tTEXT,\n" +
+                "\t\"soluong\"\tTEXT,\n" +
                 "\t\"trangthai\"\tTEXT,\n" +
                 "\tPRIMARY KEY(\"id\"),\n" +
                 "\tFOREIGN KEY(\"masp\") REFERENCES \"Product\"(\"id\"),\n" +
@@ -53,7 +54,8 @@ public class DataHelper extends SQLiteOpenHelper {
                 ");";
 
         String insertUser = "INSERT INTO User (id, ten, taikhoan, matkhau, trangthai) VALUES " +
-                "(1, 'Admin', 'admin@gmail.com', '123', '1')";
+                "(1, 'Admin', 'admin', '123', '1')," +
+                "(2, 'Minh', 'minh@gmail.com', '123', '1')";
 
         String insertProduct = "INSERT INTO Product (id, tensp, giasp, anhsp, theloai, luotmua, trangthai) VALUES " +
                 "(1, 'Hamburger 1', 23000, 'https://www.tastingtable.com/img/gallery/the-unexpected-number-of-cows-a-single-burgers-meat-could-come-from/l-intro-1652635534.jpg', 'Hamburger', '0', '1')," +

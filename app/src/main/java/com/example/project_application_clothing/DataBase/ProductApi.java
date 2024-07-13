@@ -66,8 +66,7 @@ public class ProductApi {
         }
         return list;
     }
-
-    public List<ProductModel> getAllProductByCategory (String category){
+    public List<ProductModel> getAllProductByCategory(String category){
         String[] data = new String[]{category, "1"};
         List<ProductModel> list = new ArrayList<>();
         Cursor c = db.rawQuery("SELECT * FROM Product WHERE theloai = ? AND trangthai=?", data);
@@ -86,8 +85,8 @@ public class ProductApi {
         }
         return list;
     }
-    public ProductModel getAllProductById(int id){
-        String[] data = new String[]{String.valueOf(id), "1"};
+    public ProductModel getAllProductById(String id){
+        String[] data = new String[]{id, "1"};
         Cursor c = db.rawQuery("SELECT * FROM Product WHERE id = ? AND trangthai=?", data);
         ProductModel productModel = new ProductModel();
         if (c.moveToFirst()){

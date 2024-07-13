@@ -23,7 +23,7 @@ public class RcyView_OderCancel extends RecyclerView.Adapter<RcyView_OderCancel.
     private OderModel oderModel;
     private ProductController productController;
     private List<ProductModel> listProduct;
-    private Rcyview_Oder_Product rcyview_oder_product;
+    private Rcyview_Oder_ProductCancel rcyview_oder_productCancel;
     public RcyView_OderCancel(Context context, List<OderModel> listOder) {
         this.context = context;
         this.listOder = listOder;
@@ -47,14 +47,12 @@ public class RcyView_OderCancel extends RecyclerView.Adapter<RcyView_OderCancel.
         String[] arrMagh = magh.split(",");
         listProduct = new ArrayList<>();
         for (int i=0; i<arrMagh.length; i++){
-            listProduct.add(productController.getAllProductById(Integer.parseInt(arrMagh[i])));
+            listProduct.add(productController.getAllProductById(arrMagh[i]));
         }
-
-        rcyview_oder_product = new Rcyview_Oder_Product(context, listProduct, "Cancel");
-        holder.recyclerView_OderCancel_Product.setAdapter(rcyview_oder_product);
+        rcyview_oder_productCancel = new Rcyview_Oder_ProductCancel(context, listProduct);
+        holder.recyclerView_OderCancel_Product.setAdapter(rcyview_oder_productCancel);
         holder.recyclerView_OderCancel_Product.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
     }
-
     @Override
     public int getItemCount() {
         if (listOder != null){

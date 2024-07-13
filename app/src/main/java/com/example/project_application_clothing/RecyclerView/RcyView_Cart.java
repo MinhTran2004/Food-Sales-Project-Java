@@ -25,14 +25,16 @@ public class RcyView_Cart extends RecyclerView.Adapter<RcyView_Cart.Cart_Holder>
     private CartModel cartModel;
     private ProductModel productModel;
     private List<CartModel> list;
+    private String makh;
     ProductController productController;
     CartController cartController;
     InterfaceCart interfaceCart;
     int tong = 0;
-    public RcyView_Cart(Context context, List<CartModel> list, InterfaceCart interfaceCart) {
+    public RcyView_Cart(Context context, List<CartModel> list, InterfaceCart interfaceCart, String makh) {
         this.context = context;
         this.list = list;
         this.interfaceCart = interfaceCart;
+        this.makh = makh;
     }
     @NonNull
     @Override
@@ -48,7 +50,7 @@ public class RcyView_Cart extends RecyclerView.Adapter<RcyView_Cart.Cart_Holder>
 
         cartController = new CartController(context);
         productController = new ProductController(context);
-        productModel = productController.getAllProductById(Integer.valueOf(cartModel.getMasp()));
+        productModel = productController.getAllProductById(cartModel.getMasp());
 
         Picasso.get().load(productModel.getAnhsp()).into(holder.img_Product_cart);
         holder.ten_Product_cart.setText(productModel.getTensp());
@@ -63,7 +65,7 @@ public class RcyView_Cart extends RecyclerView.Adapter<RcyView_Cart.Cart_Holder>
                 tong = 0;
                 cartController.deleteCart(cartModel);
                 list.clear();
-                list = cartController.getAllCart(1);
+                list = cartController.getAllCart(makh);
                 interfaceCart.getPriceCart(String.valueOf(tong));
                 notifyDataSetChanged();
             }

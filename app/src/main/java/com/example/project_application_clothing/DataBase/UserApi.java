@@ -40,7 +40,7 @@ public class UserApi {
         long check = db.update("User", values, "id=?", data);
         return check > 0;
     }
-    public boolean checkuser(UserModel model, String screen){
+    public boolean checkUser(UserModel model, String screen){
         boolean check = true;
         if (screen == "login"){
             String[] data = new String[]{String.valueOf(model.getTaikhoan()), String.valueOf(model.getMatkhau())};
@@ -56,6 +56,24 @@ public class UserApi {
             }
         }
         return check;
+    }
+    public UserModel checkLogin(UserModel model){
+        UserModel userModel = new UserModel();
+        String[] data = new String[]{String.valueOf(model.getTaikhoan()), String.valueOf(model.getMatkhau()), "1"};
+        Cursor cursor = db.rawQuery("SELECT * FROM User WHERE taikhoan=? AND matkhau=? AND trangthai=?", data);
+
+        if (cursor.moveToFirst()){
+            do {
+                userModel.setId(cursor.getInt(0));
+                userModel.setTen(cursor.getString(1));
+                userModel.setTaikhoan(cursor.getString(2));
+                userModel.setMatkhau(cursor.getString(3));
+                userModel.setTrangthai(cursor.getString(4));
+
+                return userModel;
+            }while (cursor.moveToNext());
+        }
+        return userModel;
     }
 
 

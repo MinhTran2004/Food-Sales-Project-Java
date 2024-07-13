@@ -49,7 +49,7 @@ public class RcyView_Product_Horiztal extends RecyclerView.Adapter<RcyView_Produ
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Product.class);
-                intent.putExtra("id", productModel.getId() + "");
+                intent.putExtra("masp", String.valueOf(productModel.getId()));
                 intent.putExtra("anh", productModel.getAnhsp());
                 intent.putExtra("ten", productModel.getTensp());
                 intent.putExtra("theloai", productModel.getTheloai());

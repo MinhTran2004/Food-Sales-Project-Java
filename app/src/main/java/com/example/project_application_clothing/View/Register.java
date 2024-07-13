@@ -42,21 +42,20 @@ public class Register extends AppCompatActivity {
                 startActivity(new Intent(Register.this, Login.class));
             }
         });
-
         btn_Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkNull(edt_Register_Ten, edt_Register_Taikhoan, edt_Register_Matkhau, txtError_Register_Ten, txtError_Register_Taikhoan, txtError_Register_Matkhau)){
-                    UserController userController = new UserController();
+                    UserController userController = new UserController(Register.this);
                     UserModel userModel = new UserModel();
                     userModel.setTen(edt_Register_Ten.getText().toString());
                     userModel.setTaikhoan(edt_Register_Taikhoan.getText().toString());
                     userModel.setMatkhau(edt_Register_Matkhau.getText().toString());
 
-                    if (userController.checkUser(userModel, Register.this, "register")){
+                    if (userController.checkUser(userModel, "Register")){
                         txtError_Register_Taikhoan.setText("Tài khoản đã tồn tại");
                     }else{
-                        if (userController.addUser(userModel, Register.this)){
+                        if (userController.addUser(userModel)){
                             startActivity(new Intent(Register.this, Login.class));
                         }
                     }

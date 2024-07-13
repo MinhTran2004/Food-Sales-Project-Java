@@ -1,12 +1,15 @@
 package com.example.project_application_clothing.View;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,8 +25,6 @@ public class Product extends AppCompatActivity {
     TextView txt_ten_product, txt_theloai_product, txt_gia_product;
     Button btn_product;
     CartController cartController;
-
-    CartModel cartModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,9 @@ public class Product extends AppCompatActivity {
 
         cartController = new CartController(this);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
+        String makh = sharedPreferences.getString("id", null);
+
         Intent intent = getIntent();
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         String giasp = decimalFormat.format(Integer.valueOf(intent.getStringExtra("gia")));
@@ -45,12 +49,14 @@ public class Product extends AppCompatActivity {
         txt_ten_product.setText(intent.getStringExtra("ten"));
         txt_theloai_product.setText(intent.getStringExtra("theloai"));
         txt_gia_product.setText("$" + giasp);
-
         btn_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cartController.insertCart(Integer.valueOf(intent.getStringExtra("id")), "1");
-//                Log.d("TAG", "onClick: " + intent.getStringExtra("id"));
+                if (cartController.insertCart(intent.getStringExtra("masp"), makh)){
+                    startActivity(new Intent(Product.this, Cart.class));
+                }else{
+                    Toast.makeText(Product.this, "Thêm sản phẩm thát bại", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

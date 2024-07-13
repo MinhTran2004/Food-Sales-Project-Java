@@ -28,15 +28,19 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txt_home_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
+                    android:textSize="18dp"
                     android:text="Trần Công Minh" />
 
                 <TextView
+                    android:id="@+id/txt_home_chucvu"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textColor="@color/white"
+                    android:textSize="16dp"
                     android:gravity="bottom"
                     android:text="Khách hàng" />
             </LinearLayout>

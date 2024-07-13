@@ -32,7 +32,7 @@ public class ProductController {
         ProductApi productApi = new ProductApi(context);
         return productApi.getAllProductByCategory(category);
     }
-    public ProductModel getAllProductById (int id){
+    public ProductModel getAllProductById (String id){
         ProductApi productApi = new ProductApi(context);
         return productApi.getAllProductById(id);
     }

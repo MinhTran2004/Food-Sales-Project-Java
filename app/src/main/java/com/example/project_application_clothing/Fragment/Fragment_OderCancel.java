@@ -1,5 +1,7 @@
 package com.example.project_application_clothing.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,16 +38,16 @@ public class Fragment_OderCancel extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         recyclerView_OderCancel = view.findViewById(R.id.recyclerView_OderCancel);
 
         oderController = new OderController(getContext());
         productController = new ProductController(getContext());
 
-        UserModel userModel = new UserModel();
-        userModel.setId(1);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("User", Context.MODE_PRIVATE);
+        String makh = sharedPreferences.getString("id", null);
+        String chucvu = sharedPreferences.getString("taikhoan", null);
 
-        listOder = oderController.getAllOderCompleted(userModel);
+        listOder = oderController.getAllOderCancel(makh, chucvu);
 
         rcyView_oderCancel = new RcyView_OderCancel(getContext(), listOder);
         recyclerView_OderCancel.setAdapter(rcyView_oderCancel);

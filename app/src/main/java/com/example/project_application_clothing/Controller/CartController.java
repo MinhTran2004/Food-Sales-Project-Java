@@ -14,7 +14,7 @@ public class CartController {
     public CartController(Context context) {
         this.context = context;
     }
-    public boolean insertCart(int id, String makh){
+    public boolean insertCart(String id, String makh){
         CartApi cartApi = new CartApi(context);
         return cartApi.insertCart(id, makh);
     }
@@ -26,7 +26,7 @@ public class CartController {
         CartApi cartApi = new CartApi(context);
         return cartApi.updateCart(cartModel);
     }
-    public List<CartModel> getAllCart(int makh){
+    public List<CartModel> getAllCart(String makh){
         CartApi cartApi = new CartApi(context);
         return cartApi.getAllCart(makh);
     }

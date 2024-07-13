@@ -1,15 +1,13 @@
 package com.example.project_application_clothing.View;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.project_application_clothing.Fragment.Fragment_Home;
@@ -43,7 +41,6 @@ public class Main extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
         fragmentManager.beginTransaction().add(R.id.frameLayout, new Fragment_Home()).commit();
-
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
